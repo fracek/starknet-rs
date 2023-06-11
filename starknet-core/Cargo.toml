@@ -25,7 +25,7 @@ ethereum-types = "0.12.1"
 flate2 = "1.0.24"
 hex = "0.4.3"
 serde = { version = "1.0.152", features = ["derive"] }
-serde_json = { version = "1.0.74", features = ["arbitrary_precision"] }
+serde_json = { version = "1.0.74" }
 serde_with = "2.2.0"
 sha3 = "0.10.0"
 thiserror = "1.0.30"
