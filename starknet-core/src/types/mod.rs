@@ -191,12 +191,9 @@ pub enum BroadcastedInvokeTransaction {
     V1(BroadcastedInvokeTransactionV1),
 }
 
-#[derive(Debug, Clone, Deserialize)]
-#[serde(tag = "version")]
+#[derive(Debug, Clone)]
 pub enum DeclareTransaction {
-    #[serde(rename = "0x1")]
     V1(DeclareTransactionV1),
-    #[serde(rename = "0x2")]
     V2(DeclareTransactionV2),
 }
 

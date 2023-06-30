@@ -181,6 +181,29 @@ mod enum_ser_impls {
         }
     }
 
+    impl<'de> Deserialize<'de> for DeclareTransaction {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: serde::Deserializer<'de>,
+        {
+            #[derive(Deserialize)]
+            #[serde(tag = "version")]
+            enum DeclareTransactionInner {
+                #[serde(rename = "0x0")]
+                V0(DeclareTransactionV1),
+                #[serde(rename = "0x1")]
+                V1(DeclareTransactionV1),
+                #[serde(rename = "0x2")]
+                V2(DeclareTransactionV2),
+            }
+            DeclareTransactionInner::deserialize(deserializer).map(|inner| match inner {
+                DeclareTransactionInner::V0(v1) => Self::V1(v1),
+                DeclareTransactionInner::V1(v1) => Self::V1(v1),
+                DeclareTransactionInner::V2(v2) => Self::V2(v2),
+            })
+        }
+    }
+
     impl Serialize for BroadcastedDeclareTransaction {
         fn serialize<S: serde::Serializer>(&self, serializer: S) -> Result<S::Ok, S::Error> {
             match self {
