@@ -30,7 +30,7 @@ pub use codegen::{
     PendingDeployAccountTransactionReceipt, PendingDeployTransactionReceipt,
     PendingInvokeTransactionReceipt, PendingL1HandlerTransactionReceipt, PendingStateUpdate,
     ReplacedClassItem, ResultPageRequest, SierraEntryPoint, StarknetError, StateDiff, StateUpdate,
-    StorageEntry, SyncStatus, TransactionStatus,
+    StorageEntry, SyncStatus, TransactionExecutionStatus, TransactionFinalityStatus,
 };
 
 // TODO: move generated request code to `starknet-providers`

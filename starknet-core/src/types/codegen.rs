@@ -3,7 +3,7 @@
 //     https://github.com/xJonathanLEI/starknet-jsonrpc-codegen
 
 // Code generated with version:
-//     https://github.com/xJonathanLEI/starknet-jsonrpc-codegen#b956776898ca9f9c92ccc9b8523ff7d82af5c3ad
+//     https://github.com/xJonathanLEI/starknet-jsonrpc-codegen#8be5fda89bbb8d2419b8fb7ecbc4ab28690bef3c
 
 // Code generation requested but not implemented for these types:
 // - `BLOCK_ID`
@@ -263,14 +263,18 @@ pub struct DeclareTransactionReceipt {
     pub transaction_hash: FieldElement,
     /// The fee that was charged by the sequencer
     pub actual_fee: FieldElement,
-    /// Status
-    pub status: TransactionStatus,
+    /// Execution status
+    pub execution_status: TransactionExecutionStatus,
+    /// Finality status
+    pub finality_status: TransactionFinalityStatus,
     /// Block hash
     pub block_hash: FieldElement,
     /// Block number
     pub block_number: u64,
     /// Messages sent
     pub messages_sent: Vec<MsgToL1>,
+    /// The revert reason for the failed execution
+    pub revert_reason: Option<String>,
     /// The events emitted as part of this transaction
     pub events: Vec<Event>,
 }
@@ -374,14 +378,18 @@ pub struct DeployAccountTransactionReceipt {
     pub transaction_hash: FieldElement,
     /// The fee that was charged by the sequencer
     pub actual_fee: FieldElement,
-    /// Status
-    pub status: TransactionStatus,
+    /// Execution status
+    pub execution_status: TransactionExecutionStatus,
+    /// Finality status
+    pub finality_status: TransactionFinalityStatus,
     /// Block hash
     pub block_hash: FieldElement,
     /// Block number
     pub block_number: u64,
     /// Messages sent
     pub messages_sent: Vec<MsgToL1>,
+    /// The revert reason for the failed execution
+    pub revert_reason: Option<String>,
     /// The events emitted as part of this transaction
     pub events: Vec<Event>,
     /// The address of the deployed contract
@@ -413,14 +421,18 @@ pub struct DeployTransactionReceipt {
     pub transaction_hash: FieldElement,
     /// The fee that was charged by the sequencer
     pub actual_fee: FieldElement,
-    /// Status
-    pub status: TransactionStatus,
+    /// Execution status
+    pub execution_status: TransactionExecutionStatus,
+    /// Finality status
+    pub finality_status: TransactionFinalityStatus,
     /// Block hash
     pub block_hash: FieldElement,
     /// Block number
     pub block_number: u64,
     /// Messages sent
     pub messages_sent: Vec<MsgToL1>,
+    /// The revert reason for the failed execution
+    pub revert_reason: Option<String>,
     /// The events emitted as part of this transaction
     pub events: Vec<Event>,
     /// The address of the deployed contract
@@ -608,14 +620,18 @@ pub struct InvokeTransactionReceipt {
     pub transaction_hash: FieldElement,
     /// The fee that was charged by the sequencer
     pub actual_fee: FieldElement,
-    /// Status
-    pub status: TransactionStatus,
+    /// Execution status
+    pub execution_status: TransactionExecutionStatus,
+    /// Finality status
+    pub finality_status: TransactionFinalityStatus,
     /// Block hash
     pub block_hash: FieldElement,
     /// Block number
     pub block_number: u64,
     /// Messages sent
     pub messages_sent: Vec<MsgToL1>,
+    /// The revert reason for the failed execution
+    pub revert_reason: Option<String>,
     /// The events emitted as part of this transaction
     pub events: Vec<Event>,
 }
@@ -688,14 +704,18 @@ pub struct L1HandlerTransactionReceipt {
     pub transaction_hash: FieldElement,
     /// The fee that was charged by the sequencer
     pub actual_fee: FieldElement,
-    /// Status
-    pub status: TransactionStatus,
+    /// Execution status
+    pub execution_status: TransactionExecutionStatus,
+    /// Finality status
+    pub finality_status: TransactionFinalityStatus,
     /// Block hash
     pub block_hash: FieldElement,
     /// Block number
     pub block_number: u64,
     /// Messages sent
     pub messages_sent: Vec<MsgToL1>,
+    /// The revert reason for the failed execution
+    pub revert_reason: Option<String>,
     /// The events emitted as part of this transaction
     pub events: Vec<Event>,
 }
@@ -900,6 +920,12 @@ pub struct PendingDeclareTransactionReceipt {
     pub messages_sent: Vec<MsgToL1>,
     /// The events emitted as part of this transaction
     pub events: Vec<Event>,
+    /// The revert reason for the failed execution
+    pub revert_reason: Option<String>,
+    /// The finality status of the transaction
+    pub finality_status: String,
+    /// Execution status
+    pub execution_status: TransactionExecutionStatus,
 }
 
 /// Pending deploy account transaction receipt.
@@ -913,6 +939,12 @@ pub struct PendingDeployAccountTransactionReceipt {
     pub messages_sent: Vec<MsgToL1>,
     /// The events emitted as part of this transaction
     pub events: Vec<Event>,
+    /// The revert reason for the failed execution
+    pub revert_reason: Option<String>,
+    /// The finality status of the transaction
+    pub finality_status: String,
+    /// Execution status
+    pub execution_status: TransactionExecutionStatus,
 }
 
 /// Pending deploy transaction receipt.
@@ -926,6 +958,12 @@ pub struct PendingDeployTransactionReceipt {
     pub messages_sent: Vec<MsgToL1>,
     /// The events emitted as part of this transaction
     pub events: Vec<Event>,
+    /// The revert reason for the failed execution
+    pub revert_reason: Option<String>,
+    /// The finality status of the transaction
+    pub finality_status: String,
+    /// Execution status
+    pub execution_status: TransactionExecutionStatus,
     /// The address of the deployed contract
     pub contract_address: FieldElement,
 }
@@ -941,6 +979,12 @@ pub struct PendingInvokeTransactionReceipt {
     pub messages_sent: Vec<MsgToL1>,
     /// The events emitted as part of this transaction
     pub events: Vec<Event>,
+    /// The revert reason for the failed execution
+    pub revert_reason: Option<String>,
+    /// The finality status of the transaction
+    pub finality_status: String,
+    /// Execution status
+    pub execution_status: TransactionExecutionStatus,
 }
 
 /// Pending receipt for L1 handler transaction.
@@ -954,6 +998,12 @@ pub struct PendingL1HandlerTransactionReceipt {
     pub messages_sent: Vec<MsgToL1>,
     /// The events emitted as part of this transaction
     pub events: Vec<Event>,
+    /// The revert reason for the failed execution
+    pub revert_reason: Option<String>,
+    /// The finality status of the transaction
+    pub finality_status: String,
+    /// Execution status
+    pub execution_status: TransactionExecutionStatus,
 }
 
 /// Pending state update.
@@ -1138,19 +1188,26 @@ pub struct SyncStatus {
     pub highest_block_num: u64,
 }
 
-/// Transaction status.
+/// Execution status.
 ///
-/// The status of the transaction.
+/// The execution status of the transaction.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
-pub enum TransactionStatus {
-    #[serde(rename = "PENDING")]
-    Pending,
+pub enum TransactionExecutionStatus {
+    #[serde(rename = "SUCCEEDED")]
+    Succeeded,
+    #[serde(rename = "REVERTED")]
+    Reverted,
+}
+
+/// Finality status.
+///
+/// The finality status of the transaction.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum TransactionFinalityStatus {
     #[serde(rename = "ACCEPTED_ON_L2")]
     AcceptedOnL2,
     #[serde(rename = "ACCEPTED_ON_L1")]
     AcceptedOnL1,
-    #[serde(rename = "REJECTED")]
-    Rejected,
 }
 
 /// Request for method starknet_addDeclareTransaction
@@ -1903,11 +1960,14 @@ impl Serialize for DeclareTransactionReceipt {
             pub transaction_hash: &'a FieldElement,
             #[serde_as(as = "UfeHex")]
             pub actual_fee: &'a FieldElement,
-            pub status: &'a TransactionStatus,
+            pub execution_status: &'a TransactionExecutionStatus,
+            pub finality_status: &'a TransactionFinalityStatus,
             #[serde_as(as = "UfeHex")]
             pub block_hash: &'a FieldElement,
             pub block_number: &'a u64,
             pub messages_sent: &'a [MsgToL1],
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: &'a Option<String>,
             pub events: &'a [Event],
         }
 
@@ -1917,10 +1977,12 @@ impl Serialize for DeclareTransactionReceipt {
             r#type,
             transaction_hash: &self.transaction_hash,
             actual_fee: &self.actual_fee,
-            status: &self.status,
+            execution_status: &self.execution_status,
+            finality_status: &self.finality_status,
             block_hash: &self.block_hash,
             block_number: &self.block_number,
             messages_sent: &self.messages_sent,
+            revert_reason: &self.revert_reason,
             events: &self.events,
         };
 
@@ -1939,11 +2001,14 @@ impl<'de> Deserialize<'de> for DeclareTransactionReceipt {
             pub transaction_hash: FieldElement,
             #[serde_as(as = "UfeHex")]
             pub actual_fee: FieldElement,
-            pub status: TransactionStatus,
+            pub execution_status: TransactionExecutionStatus,
+            pub finality_status: TransactionFinalityStatus,
             #[serde_as(as = "UfeHex")]
             pub block_hash: FieldElement,
             pub block_number: u64,
             pub messages_sent: Vec<MsgToL1>,
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: Option<String>,
             pub events: Vec<Event>,
         }
 
@@ -1958,10 +2023,12 @@ impl<'de> Deserialize<'de> for DeclareTransactionReceipt {
         Ok(Self {
             transaction_hash: tagged.transaction_hash,
             actual_fee: tagged.actual_fee,
-            status: tagged.status,
+            execution_status: tagged.execution_status,
+            finality_status: tagged.finality_status,
             block_hash: tagged.block_hash,
             block_number: tagged.block_number,
             messages_sent: tagged.messages_sent,
+            revert_reason: tagged.revert_reason,
             events: tagged.events,
         })
     }
@@ -2344,11 +2411,14 @@ impl Serialize for DeployAccountTransactionReceipt {
             pub transaction_hash: &'a FieldElement,
             #[serde_as(as = "UfeHex")]
             pub actual_fee: &'a FieldElement,
-            pub status: &'a TransactionStatus,
+            pub execution_status: &'a TransactionExecutionStatus,
+            pub finality_status: &'a TransactionFinalityStatus,
             #[serde_as(as = "UfeHex")]
             pub block_hash: &'a FieldElement,
             pub block_number: &'a u64,
             pub messages_sent: &'a [MsgToL1],
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: &'a Option<String>,
             pub events: &'a [Event],
             pub r#type: &'a str,
             #[serde_as(as = "UfeHex")]
@@ -2360,10 +2430,12 @@ impl Serialize for DeployAccountTransactionReceipt {
         let tagged = Tagged {
             transaction_hash: &self.transaction_hash,
             actual_fee: &self.actual_fee,
-            status: &self.status,
+            execution_status: &self.execution_status,
+            finality_status: &self.finality_status,
             block_hash: &self.block_hash,
             block_number: &self.block_number,
             messages_sent: &self.messages_sent,
+            revert_reason: &self.revert_reason,
             events: &self.events,
             r#type,
             contract_address: &self.contract_address,
@@ -2383,11 +2455,14 @@ impl<'de> Deserialize<'de> for DeployAccountTransactionReceipt {
             pub transaction_hash: FieldElement,
             #[serde_as(as = "UfeHex")]
             pub actual_fee: FieldElement,
-            pub status: TransactionStatus,
+            pub execution_status: TransactionExecutionStatus,
+            pub finality_status: TransactionFinalityStatus,
             #[serde_as(as = "UfeHex")]
             pub block_hash: FieldElement,
             pub block_number: u64,
             pub messages_sent: Vec<MsgToL1>,
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: Option<String>,
             pub events: Vec<Event>,
             pub r#type: Option<String>,
             #[serde_as(as = "UfeHex")]
@@ -2405,10 +2480,12 @@ impl<'de> Deserialize<'de> for DeployAccountTransactionReceipt {
         Ok(Self {
             transaction_hash: tagged.transaction_hash,
             actual_fee: tagged.actual_fee,
-            status: tagged.status,
+            execution_status: tagged.execution_status,
+            finality_status: tagged.finality_status,
             block_hash: tagged.block_hash,
             block_number: tagged.block_number,
             messages_sent: tagged.messages_sent,
+            revert_reason: tagged.revert_reason,
             events: tagged.events,
             contract_address: tagged.contract_address,
         })
@@ -2494,11 +2571,14 @@ impl Serialize for DeployTransactionReceipt {
             pub transaction_hash: &'a FieldElement,
             #[serde_as(as = "UfeHex")]
             pub actual_fee: &'a FieldElement,
-            pub status: &'a TransactionStatus,
+            pub execution_status: &'a TransactionExecutionStatus,
+            pub finality_status: &'a TransactionFinalityStatus,
             #[serde_as(as = "UfeHex")]
             pub block_hash: &'a FieldElement,
             pub block_number: &'a u64,
             pub messages_sent: &'a [MsgToL1],
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: &'a Option<String>,
             pub events: &'a [Event],
             pub r#type: &'a str,
             #[serde_as(as = "UfeHex")]
@@ -2510,10 +2590,12 @@ impl Serialize for DeployTransactionReceipt {
         let tagged = Tagged {
             transaction_hash: &self.transaction_hash,
             actual_fee: &self.actual_fee,
-            status: &self.status,
+            execution_status: &self.execution_status,
+            finality_status: &self.finality_status,
             block_hash: &self.block_hash,
             block_number: &self.block_number,
             messages_sent: &self.messages_sent,
+            revert_reason: &self.revert_reason,
             events: &self.events,
             r#type,
             contract_address: &self.contract_address,
@@ -2533,11 +2615,14 @@ impl<'de> Deserialize<'de> for DeployTransactionReceipt {
             pub transaction_hash: FieldElement,
             #[serde_as(as = "UfeHex")]
             pub actual_fee: FieldElement,
-            pub status: TransactionStatus,
+            pub execution_status: TransactionExecutionStatus,
+            pub finality_status: TransactionFinalityStatus,
             #[serde_as(as = "UfeHex")]
             pub block_hash: FieldElement,
             pub block_number: u64,
             pub messages_sent: Vec<MsgToL1>,
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: Option<String>,
             pub events: Vec<Event>,
             pub r#type: Option<String>,
             #[serde_as(as = "UfeHex")]
@@ -2555,10 +2640,12 @@ impl<'de> Deserialize<'de> for DeployTransactionReceipt {
         Ok(Self {
             transaction_hash: tagged.transaction_hash,
             actual_fee: tagged.actual_fee,
-            status: tagged.status,
+            execution_status: tagged.execution_status,
+            finality_status: tagged.finality_status,
             block_hash: tagged.block_hash,
             block_number: tagged.block_number,
             messages_sent: tagged.messages_sent,
+            revert_reason: tagged.revert_reason,
             events: tagged.events,
             contract_address: tagged.contract_address,
         })
@@ -2575,11 +2662,14 @@ impl Serialize for InvokeTransactionReceipt {
             pub transaction_hash: &'a FieldElement,
             #[serde_as(as = "UfeHex")]
             pub actual_fee: &'a FieldElement,
-            pub status: &'a TransactionStatus,
+            pub execution_status: &'a TransactionExecutionStatus,
+            pub finality_status: &'a TransactionFinalityStatus,
             #[serde_as(as = "UfeHex")]
             pub block_hash: &'a FieldElement,
             pub block_number: &'a u64,
             pub messages_sent: &'a [MsgToL1],
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: &'a Option<String>,
             pub events: &'a [Event],
         }
 
@@ -2589,10 +2679,12 @@ impl Serialize for InvokeTransactionReceipt {
             r#type,
             transaction_hash: &self.transaction_hash,
             actual_fee: &self.actual_fee,
-            status: &self.status,
+            execution_status: &self.execution_status,
+            finality_status: &self.finality_status,
             block_hash: &self.block_hash,
             block_number: &self.block_number,
             messages_sent: &self.messages_sent,
+            revert_reason: &self.revert_reason,
             events: &self.events,
         };
 
@@ -2611,11 +2703,14 @@ impl<'de> Deserialize<'de> for InvokeTransactionReceipt {
             pub transaction_hash: FieldElement,
             #[serde_as(as = "UfeHex")]
             pub actual_fee: FieldElement,
-            pub status: TransactionStatus,
+            pub execution_status: TransactionExecutionStatus,
+            pub finality_status: TransactionFinalityStatus,
             #[serde_as(as = "UfeHex")]
             pub block_hash: FieldElement,
             pub block_number: u64,
             pub messages_sent: Vec<MsgToL1>,
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: Option<String>,
             pub events: Vec<Event>,
         }
 
@@ -2630,10 +2725,12 @@ impl<'de> Deserialize<'de> for InvokeTransactionReceipt {
         Ok(Self {
             transaction_hash: tagged.transaction_hash,
             actual_fee: tagged.actual_fee,
-            status: tagged.status,
+            execution_status: tagged.execution_status,
+            finality_status: tagged.finality_status,
             block_hash: tagged.block_hash,
             block_number: tagged.block_number,
             messages_sent: tagged.messages_sent,
+            revert_reason: tagged.revert_reason,
             events: tagged.events,
         })
     }
@@ -2909,11 +3006,14 @@ impl Serialize for L1HandlerTransactionReceipt {
             pub transaction_hash: &'a FieldElement,
             #[serde_as(as = "UfeHex")]
             pub actual_fee: &'a FieldElement,
-            pub status: &'a TransactionStatus,
+            pub execution_status: &'a TransactionExecutionStatus,
+            pub finality_status: &'a TransactionFinalityStatus,
             #[serde_as(as = "UfeHex")]
             pub block_hash: &'a FieldElement,
             pub block_number: &'a u64,
             pub messages_sent: &'a [MsgToL1],
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: &'a Option<String>,
             pub events: &'a [Event],
         }
 
@@ -2923,10 +3023,12 @@ impl Serialize for L1HandlerTransactionReceipt {
             r#type,
             transaction_hash: &self.transaction_hash,
             actual_fee: &self.actual_fee,
-            status: &self.status,
+            execution_status: &self.execution_status,
+            finality_status: &self.finality_status,
             block_hash: &self.block_hash,
             block_number: &self.block_number,
             messages_sent: &self.messages_sent,
+            revert_reason: &self.revert_reason,
             events: &self.events,
         };
 
@@ -2945,11 +3047,14 @@ impl<'de> Deserialize<'de> for L1HandlerTransactionReceipt {
             pub transaction_hash: FieldElement,
             #[serde_as(as = "UfeHex")]
             pub actual_fee: FieldElement,
-            pub status: TransactionStatus,
+            pub execution_status: TransactionExecutionStatus,
+            pub finality_status: TransactionFinalityStatus,
             #[serde_as(as = "UfeHex")]
             pub block_hash: FieldElement,
             pub block_number: u64,
             pub messages_sent: Vec<MsgToL1>,
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: Option<String>,
             pub events: Vec<Event>,
         }
 
@@ -2964,10 +3069,12 @@ impl<'de> Deserialize<'de> for L1HandlerTransactionReceipt {
         Ok(Self {
             transaction_hash: tagged.transaction_hash,
             actual_fee: tagged.actual_fee,
-            status: tagged.status,
+            execution_status: tagged.execution_status,
+            finality_status: tagged.finality_status,
             block_hash: tagged.block_hash,
             block_number: tagged.block_number,
             messages_sent: tagged.messages_sent,
+            revert_reason: tagged.revert_reason,
             events: tagged.events,
         })
     }
@@ -2985,6 +3092,10 @@ impl Serialize for PendingDeclareTransactionReceipt {
             pub r#type: &'a str,
             pub messages_sent: &'a [MsgToL1],
             pub events: &'a [Event],
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: &'a Option<String>,
+            pub finality_status: &'a str,
+            pub execution_status: &'a TransactionExecutionStatus,
         }
 
         let r#type = "DECLARE";
@@ -2995,6 +3106,9 @@ impl Serialize for PendingDeclareTransactionReceipt {
             r#type,
             messages_sent: &self.messages_sent,
             events: &self.events,
+            revert_reason: &self.revert_reason,
+            finality_status: &self.finality_status,
+            execution_status: &self.execution_status,
         };
 
         Tagged::serialize(&tagged, serializer)
@@ -3014,6 +3128,10 @@ impl<'de> Deserialize<'de> for PendingDeclareTransactionReceipt {
             pub r#type: Option<String>,
             pub messages_sent: Vec<MsgToL1>,
             pub events: Vec<Event>,
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: Option<String>,
+            pub finality_status: String,
+            pub execution_status: TransactionExecutionStatus,
         }
 
         let tagged = Tagged::deserialize(deserializer)?;
@@ -3029,6 +3147,9 @@ impl<'de> Deserialize<'de> for PendingDeclareTransactionReceipt {
             actual_fee: tagged.actual_fee,
             messages_sent: tagged.messages_sent,
             events: tagged.events,
+            revert_reason: tagged.revert_reason,
+            finality_status: tagged.finality_status,
+            execution_status: tagged.execution_status,
         })
     }
 }
@@ -3045,6 +3166,10 @@ impl Serialize for PendingDeployAccountTransactionReceipt {
             pub r#type: &'a str,
             pub messages_sent: &'a [MsgToL1],
             pub events: &'a [Event],
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: &'a Option<String>,
+            pub finality_status: &'a str,
+            pub execution_status: &'a TransactionExecutionStatus,
         }
 
         let r#type = "DEPLOY_ACCOUNT";
@@ -3055,6 +3180,9 @@ impl Serialize for PendingDeployAccountTransactionReceipt {
             r#type,
             messages_sent: &self.messages_sent,
             events: &self.events,
+            revert_reason: &self.revert_reason,
+            finality_status: &self.finality_status,
+            execution_status: &self.execution_status,
         };
 
         Tagged::serialize(&tagged, serializer)
@@ -3074,6 +3202,10 @@ impl<'de> Deserialize<'de> for PendingDeployAccountTransactionReceipt {
             pub r#type: Option<String>,
             pub messages_sent: Vec<MsgToL1>,
             pub events: Vec<Event>,
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: Option<String>,
+            pub finality_status: String,
+            pub execution_status: TransactionExecutionStatus,
         }
 
         let tagged = Tagged::deserialize(deserializer)?;
@@ -3089,6 +3221,9 @@ impl<'de> Deserialize<'de> for PendingDeployAccountTransactionReceipt {
             actual_fee: tagged.actual_fee,
             messages_sent: tagged.messages_sent,
             events: tagged.events,
+            revert_reason: tagged.revert_reason,
+            finality_status: tagged.finality_status,
+            execution_status: tagged.execution_status,
         })
     }
 }
@@ -3105,6 +3240,10 @@ impl Serialize for PendingDeployTransactionReceipt {
             pub r#type: &'a str,
             pub messages_sent: &'a [MsgToL1],
             pub events: &'a [Event],
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: &'a Option<String>,
+            pub finality_status: &'a str,
+            pub execution_status: &'a TransactionExecutionStatus,
             #[serde_as(as = "UfeHex")]
             pub contract_address: &'a FieldElement,
         }
@@ -3117,6 +3256,9 @@ impl Serialize for PendingDeployTransactionReceipt {
             r#type,
             messages_sent: &self.messages_sent,
             events: &self.events,
+            revert_reason: &self.revert_reason,
+            finality_status: &self.finality_status,
+            execution_status: &self.execution_status,
             contract_address: &self.contract_address,
         };
 
@@ -3137,6 +3279,10 @@ impl<'de> Deserialize<'de> for PendingDeployTransactionReceipt {
             pub r#type: Option<String>,
             pub messages_sent: Vec<MsgToL1>,
             pub events: Vec<Event>,
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: Option<String>,
+            pub finality_status: String,
+            pub execution_status: TransactionExecutionStatus,
             #[serde_as(as = "UfeHex")]
             pub contract_address: FieldElement,
         }
@@ -3154,6 +3300,9 @@ impl<'de> Deserialize<'de> for PendingDeployTransactionReceipt {
             actual_fee: tagged.actual_fee,
             messages_sent: tagged.messages_sent,
             events: tagged.events,
+            revert_reason: tagged.revert_reason,
+            finality_status: tagged.finality_status,
+            execution_status: tagged.execution_status,
             contract_address: tagged.contract_address,
         })
     }
@@ -3171,6 +3320,10 @@ impl Serialize for PendingInvokeTransactionReceipt {
             pub r#type: &'a str,
             pub messages_sent: &'a [MsgToL1],
             pub events: &'a [Event],
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: &'a Option<String>,
+            pub finality_status: &'a str,
+            pub execution_status: &'a TransactionExecutionStatus,
         }
 
         let r#type = "INVOKE";
@@ -3181,6 +3334,9 @@ impl Serialize for PendingInvokeTransactionReceipt {
             r#type,
             messages_sent: &self.messages_sent,
             events: &self.events,
+            revert_reason: &self.revert_reason,
+            finality_status: &self.finality_status,
+            execution_status: &self.execution_status,
         };
 
         Tagged::serialize(&tagged, serializer)
@@ -3200,6 +3356,10 @@ impl<'de> Deserialize<'de> for PendingInvokeTransactionReceipt {
             pub r#type: Option<String>,
             pub messages_sent: Vec<MsgToL1>,
             pub events: Vec<Event>,
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: Option<String>,
+            pub finality_status: String,
+            pub execution_status: TransactionExecutionStatus,
         }
 
         let tagged = Tagged::deserialize(deserializer)?;
@@ -3215,6 +3375,9 @@ impl<'de> Deserialize<'de> for PendingInvokeTransactionReceipt {
             actual_fee: tagged.actual_fee,
             messages_sent: tagged.messages_sent,
             events: tagged.events,
+            revert_reason: tagged.revert_reason,
+            finality_status: tagged.finality_status,
+            execution_status: tagged.execution_status,
         })
     }
 }
@@ -3231,6 +3394,10 @@ impl Serialize for PendingL1HandlerTransactionReceipt {
             pub r#type: &'a str,
             pub messages_sent: &'a [MsgToL1],
             pub events: &'a [Event],
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: &'a Option<String>,
+            pub finality_status: &'a str,
+            pub execution_status: &'a TransactionExecutionStatus,
         }
 
         let r#type = "L1_HANDLER";
@@ -3241,6 +3408,9 @@ impl Serialize for PendingL1HandlerTransactionReceipt {
             r#type,
             messages_sent: &self.messages_sent,
             events: &self.events,
+            revert_reason: &self.revert_reason,
+            finality_status: &self.finality_status,
+            execution_status: &self.execution_status,
         };
 
         Tagged::serialize(&tagged, serializer)
@@ -3260,6 +3430,10 @@ impl<'de> Deserialize<'de> for PendingL1HandlerTransactionReceipt {
             pub r#type: Option<String>,
             pub messages_sent: Vec<MsgToL1>,
             pub events: Vec<Event>,
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub revert_reason: Option<String>,
+            pub finality_status: String,
+            pub execution_status: TransactionExecutionStatus,
         }
 
         let tagged = Tagged::deserialize(deserializer)?;
@@ -3275,6 +3449,9 @@ impl<'de> Deserialize<'de> for PendingL1HandlerTransactionReceipt {
             actual_fee: tagged.actual_fee,
             messages_sent: tagged.messages_sent,
             events: tagged.events,
+            revert_reason: tagged.revert_reason,
+            finality_status: tagged.finality_status,
+            execution_status: tagged.execution_status,
         })
     }
 }
