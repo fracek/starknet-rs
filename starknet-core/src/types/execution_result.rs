@@ -58,30 +58,19 @@ impl<'de> Deserialize<'de> for ExecutionResult {
         D: serde::Deserializer<'de>,
     {
         #[derive(Deserialize)]
-        #[cfg_attr(feature = "no_unknown_fields", serde(deny_unknown_fields))]
         struct Raw {
             execution_status: TransactionExecutionStatus,
-            revert_reason: Option<String>,
+            #[serde(default)]
+            revert_reason: String,
         }
 
         let raw = Raw::deserialize(deserializer)?;
 
-        /*
-        match (raw.execution_status, raw.revert_reason) {
-            (TransactionExecutionStatus::Succeeded, None) => Ok(Self::Succeeded),
-            (TransactionExecutionStatus::Reverted, Some(reason)) => Ok(Self::Reverted { reason }),
-            (TransactionExecutionStatus::Succeeded, Some(_)) => Err(serde::de::Error::custom(
-                "field `revert_reason` must not exist when `execution_status` is `SUCCEEDED`",
-            )),
-            (TransactionExecutionStatus::Reverted, None) => Err(serde::de::Error::custom(
-                "field `revert_reason` missing when `execution_status` is `REVERTED`",
-            )),
-        }
-        */
-        let reason = raw.revert_reason.unwrap_or_default();
         match raw.execution_status {
             TransactionExecutionStatus::Succeeded => Ok(Self::Succeeded),
-            TransactionExecutionStatus::Reverted => Ok(Self::Reverted { reason }),
+            TransactionExecutionStatus::Reverted => Ok(Self::Reverted {
+                reason: raw.revert_reason,
+            }),
         }
     }
 }
