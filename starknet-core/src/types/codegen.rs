@@ -4381,6 +4381,7 @@ impl<'de> Deserialize<'de> for L1HandlerTransaction {
             pub version: FieldElement,
             pub r#type: Option<String>,
             #[serde_as(as = "NumAsHex")]
+            #[serde(default)]
             pub nonce: u64,
             #[serde_as(as = "UfeHex")]
             pub contract_address: FieldElement,
